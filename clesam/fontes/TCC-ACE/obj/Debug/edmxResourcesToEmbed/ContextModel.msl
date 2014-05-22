@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ContextModelStoreContainer" CdmEntityContainer="ContextEntities">
+    <EntitySetMapping Name="Grupo">
+      <EntityTypeMapping TypeName="ContextModel.Grupo">
+        <MappingFragment StoreEntitySet="Grupo">
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recurso">
+      <EntityTypeMapping TypeName="ContextModel.Recurso">
+        <MappingFragment StoreEntitySet="Recurso">
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="href" ColumnName="href" />
+          <ScalarProperty Name="src" ColumnName="src" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="tipoRecurso_codigo" ColumnName="tipoRecurso_codigo" />
+          <ScalarProperty Name="recursoPai_codigo" ColumnName="recursoPai_codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoRecurso">
+      <EntityTypeMapping TypeName="ContextModel.TipoRecurso">
+        <MappingFragment StoreEntitySet="TipoRecurso">
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="ordem" ColumnName="ordem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="ContextModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="GrupoRecurso_codigo" ColumnName="GrupoRecurso_codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GrupoRecurso" TypeName="ContextModel.GrupoRecurso" StoreEntitySet="GrupoRecurso">
+      <EndProperty Name="Grupo">
+        <ScalarProperty Name="codigo" ColumnName="Grupo_codigo" />
+      </EndProperty>
+      <EndProperty Name="Recurso">
+        <ScalarProperty Name="codigo" ColumnName="Recurso_codigo" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
