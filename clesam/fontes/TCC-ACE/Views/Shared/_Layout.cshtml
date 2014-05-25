@@ -1,4 +1,9 @@
-﻿@using TCC_ACE.Menu;
+﻿@using TCC_ACE.BaseLayout
+@using TCC_ACE.Menu;
+@{
+    int grupo = 1;
+    int.TryParse(Request.Cookies["grupo"]["codigo"], out grupo);
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -163,10 +168,13 @@
                         <button class="btn btn-success">
                             <i class="icon-calendar"></i>
                         </button>
+                        @if (VerificacaoRecurso.VerificarRecursoPermitido(grupo, 23))
+                        {
+                            <button class="btn btn-info" onclick="location.href = '/Usuario'">
+                                <i class="fa fa-users"></i>
+                            </button>
+                        }
 
-                        <button class="btn btn-info">
-                            <i class="fa fa-users"></i>
-                        </button>
                     </div>
 
                     <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
@@ -176,18 +184,18 @@
 
                 </div><!-- #sidebar-shortcuts -->
 
-                    <ul class="nav nav-list">
-                        @Html.Raw(@Menu.MenuLateral())
-                    </ul>
+                <ul class="nav nav-list">
+                    @Html.Raw(@Menu.MenuLateral(grupo))
+                </ul>
 
-                    <div class="sidebar-collapse" id="sidebar-collapse">
-                        <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
-                    </div>
+                <div class="sidebar-collapse" id="sidebar-collapse">
+                    <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+                </div>
 
-                    <script type="text/javascript">
-                        try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
-                    </script>
-</div>
+                <script type="text/javascript">
+                    try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
+                </script>
+            </div>
 
             <div class="main-content">
                 <div class="breadcrumbs" id="breadcrumbs">
@@ -222,14 +230,14 @@
                 </div><!-- /.page-content -->
             </div><!-- /.main-content -->
 
-        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-            <i class="icon-double-angle-up icon-only bigger-110"></i>
-        </a>
-    </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/ace")
-    
-    @RenderSection("scripts", required: false)
+            <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+                <i class="icon-double-angle-up icon-only bigger-110"></i>
+            </a>
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/ace")
+
+        @RenderSection("scripts", required: false)
 </body>
 </html>
