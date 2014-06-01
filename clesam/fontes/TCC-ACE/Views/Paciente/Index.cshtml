@@ -1,20 +1,25 @@
-﻿<div class="row">
+﻿@{
+    ViewBag.Title = "Paciente";
+}
+
+@model TCC_ACE.Models.ModelPaciente
+
+<div class="row">
     <div class="col-xs-12">
         <!-- PAGE CONTENT BEGINS -->
         <div class="widget-box">
             <div class="widget-header header-color-blue">
-                <h4>Paciente</h4>
+                <div class="tituloPainel"><h4>Paciente</h4></div>
             </div>
 
             <div class="widget-body">
                 <div class="widget-main">
-                    <form>
+                    <form method="POST">
                         <div id="faq-list-1" class="panel-group accordion-style1 accordion-style2">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <a href="#faq-1-1" data-parent="#faq-list-1" data-toggle="collapse" class="accordion-toggle collapsed">
                                         <i class="icon-chevron-left pull-right" data-icon-hide="icon-chevron-down" data-icon-show="icon-chevron-left"></i>
-
                                         <i class="icon-user bigger-130"></i>
                                         Dados Pessoais
                                     </a>
@@ -24,11 +29,11 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label class="control-label" for="prontuario">
+                                                    <label class="control-label" for="Prontuario">
                                                         Número do prontuário
                                                     </label>
                                                     <div class="controls">
-                                                        <input id="prontuario" name="prontuario" type="text" class=" form-control" maxlength="10" required="">
+                                                        <input id="Prontuario" name="Prontuario" type="text" class="form-control" maxlength="10" required="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -37,27 +42,25 @@
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="form-group">
-                                                    <label class="control-label" for="nome">
+                                                    <label class="control-label" for="Nome">
                                                         Nome
                                                     </label>
                                                     <div class="controls">
-                                                        <input id="nome" name="nome" type="text" class=" form-control" maxlength="60" required="">
+                                                        <input id="Nome" name="Nome" type="text" class=" form-control" maxlength="60" required="">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label class="control-label" for="nasc">
+                                                    <label class="control-label" for="DataNascimento">
                                                         Data de Nascimento
                                                     </label>
                                                     <div class="controls">
-                                                        <input id="nasc" name="nasc" type="date" class=" form-control" required="">
+                                                        <input id="DataNascimento" name="DataNascimento" type="date" class=" form-control" required="">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="form-group">
@@ -74,21 +77,21 @@
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="form-group">
-                                                    <label class="control-label" for="logradouro">
+                                                    <label class="control-label" for="Logradouro">
                                                         Logradouro
                                                     </label>
                                                     <div class="controls">
-                                                        <input id="logradouro" name="logradouro" type="text" class=" form-control">
+                                                        <input id="Logradouro" name="Logradouro" type="text" class=" form-control">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label class="control-label" for="numero">
+                                                    <label class="control-label" for="NumeroLogradouro">
                                                         Número
                                                     </label>
                                                     <div class="controls">
-                                                        <input id="numero" name="numero" type="text" class=" form-control">
+                                                        <input id="NumeroLogradouro" name="NumeroLogradouro" type="text" class=" form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -96,11 +99,11 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label class="control-label" for="bairro">
+                                                    <label class="control-label">
                                                         Bairro
                                                     </label>
                                                     <div class="controls">
-                                                        <input id="bairro" name="bairro" type="text" class=" form-control">
+                                                        @Html.TextBoxFor(x => x.Bairro, new { @maxlength = 20, @class="form-control"  })
                                                     </div>
                                                 </div>
                                             </div>
@@ -195,13 +198,10 @@
                                 </div>
                             </div>
 
-
-
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <a href="#faq-1-3" data-parent="#faq-list-1" data-toggle="collapse" class="accordion-toggle collapsed">
                                         <i class="icon-chevron-left pull-right" data-icon-hide="icon-chevron-down" data-icon-show="icon-chevron-left"></i>
-
                                         <i class="icon-credit-card bigger-130"></i>
                                         Dados Complementares
                                     </a>
@@ -333,8 +333,8 @@
                                 </div>
                             </div>
                             <div class="form-actions center" style="margin-top:10px;margin-bottom:0px">
-                                <button type="button" class="btn btn-sm btn-success">
-                                    Submit
+                                <button type="submit" class="btn btn-sm btn-success">
+                                    Salvar
                                     <i class="icon-arrow-right icon-on-right bigger-110"></i>
                                 </button>
                             </div>

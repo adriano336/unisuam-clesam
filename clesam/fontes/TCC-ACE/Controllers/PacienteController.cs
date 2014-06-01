@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TCC_ACE.Models;
+using TCC_ACE.Persistence;
 
 namespace TCC_ACE.Controllers
 {
@@ -10,12 +12,24 @@ namespace TCC_ACE.Controllers
     {
         //
         // GET: /Paciente/
-        public ActionResult Index()
+        public ActionResult Index(ModelPaciente paciente, FormCollection form)
         {
-            return View();
-        }
-
-        public ActionResult Incluir() {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (var context = new ContextEntities())
+                    {
+                        new PacienteDb(context).SalvarPaciente(paciente);
+                    }
+                    
+                   
+                }
+            }
+            catch (Exception e)
+            {
+                
+            }
 
             return View();
         }

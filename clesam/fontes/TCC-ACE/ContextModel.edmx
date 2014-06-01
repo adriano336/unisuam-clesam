@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Grupo">
           <Key>
             <PropertyRef Name="codigo" />
@@ -20,6 +20,34 @@
           </Key>
           <Property Name="Grupo_codigo" Type="int" Nullable="false" />
           <Property Name="Recurso_codigo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prontuario" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="nchar" MaxLength="60" Nullable="false" />
+          <Property Name="DataNascimento" Type="date" Nullable="false" />
+          <Property Name="Logradouro" Type="nchar" MaxLength="60" />
+          <Property Name="NumeroLogradouro" Type="nchar" MaxLength="10" />
+          <Property Name="Bairro" Type="nchar" MaxLength="20" />
+          <Property Name="TelefoneResidencia" Type="int" Nullable="false" />
+          <Property Name="TelefoneCelular" Type="int" Nullable="false" />
+          <Property Name="TelefoneComercial" Type="int" />
+          <Property Name="EstadoCivil" Type="int" />
+          <Property Name="Escolaridade" Type="int" />
+          <Property Name="Profissao" Type="nchar" MaxLength="60" />
+          <Property Name="Sexo" Type="bit" />
+          <Property Name="Altura" Type="int" />
+          <Property Name="Peso" Type="int" />
+          <Property Name="Email" Type="nchar" MaxLength="30" />
+          <Property Name="PacientePrecisaResponsavel" Type="bit" />
+          <Property Name="NomeResponsavel" Type="nchar" MaxLength="60" />
+          <Property Name="NomeMae" Type="nchar" MaxLength="60" />
+          <Property Name="NomePai" Type="nchar" MaxLength="60" />
+          <Property Name="VinculoPrevidenciario" Type="nchar" MaxLength="30" />
+          <Property Name="Procedencia" Type="nchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="Recurso">
           <Key>
@@ -113,6 +141,7 @@
         <EntityContainer Name="ContextModelStoreContainer">
           <EntitySet Name="Grupo" EntityType="Self.Grupo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GrupoRecurso" EntityType="Self.GrupoRecurso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recurso" EntityType="Self.Recurso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoRecurso" EntityType="Self.TipoRecurso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
@@ -137,8 +166,7 @@
             <End Role="Recurso" EntitySet="Recurso" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ContextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -248,7 +276,36 @@
             <End Role="Grupo" EntitySet="Grupo" />
             <End Role="Recurso" EntitySet="Recurso" />
           </AssociationSet>
+          <EntitySet Name="Paciente" EntityType="ContextModel.Paciente" />
         </EntityContainer>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prontuario" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Logradouro" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="NumeroLogradouro" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Bairro" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="TelefoneResidencia" Type="Int32" Nullable="false" />
+          <Property Name="TelefoneCelular" Type="Int32" Nullable="false" />
+          <Property Name="TelefoneComercial" Type="Int32" />
+          <Property Name="EstadoCivil" Type="Int32" />
+          <Property Name="Escolaridade" Type="Int32" />
+          <Property Name="Profissao" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="Sexo" Type="Boolean" />
+          <Property Name="Altura" Type="Int32" />
+          <Property Name="Peso" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="PacientePrecisaResponsavel" Type="Boolean" />
+          <Property Name="NomeResponsavel" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="NomeMae" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="NomePai" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="VinculoPrevidenciario" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Procedencia" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -304,6 +361,35 @@
               <ScalarProperty Name="codigo" ColumnName="Recurso_codigo" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Paciente">
+            <EntityTypeMapping TypeName="ContextModel.Paciente">
+              <MappingFragment StoreEntitySet="Paciente">
+                <ScalarProperty Name="Procedencia" ColumnName="Procedencia" />
+                <ScalarProperty Name="VinculoPrevidenciario" ColumnName="VinculoPrevidenciario" />
+                <ScalarProperty Name="NomePai" ColumnName="NomePai" />
+                <ScalarProperty Name="NomeMae" ColumnName="NomeMae" />
+                <ScalarProperty Name="NomeResponsavel" ColumnName="NomeResponsavel" />
+                <ScalarProperty Name="PacientePrecisaResponsavel" ColumnName="PacientePrecisaResponsavel" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Altura" ColumnName="Altura" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Profissao" ColumnName="Profissao" />
+                <ScalarProperty Name="Escolaridade" ColumnName="Escolaridade" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="TelefoneComercial" ColumnName="TelefoneComercial" />
+                <ScalarProperty Name="TelefoneCelular" ColumnName="TelefoneCelular" />
+                <ScalarProperty Name="TelefoneResidencia" ColumnName="TelefoneResidencia" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="NumeroLogradouro" ColumnName="NumeroLogradouro" />
+                <ScalarProperty Name="Logradouro" ColumnName="Logradouro" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Prontuario" ColumnName="Prontuario" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

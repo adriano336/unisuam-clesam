@@ -151,8 +151,13 @@
       <DependentUpon>ContextModel.tt</DependentUpon>
     </Compile>
     <Compile Include="BaseLayout\Menu.cs" />
+    <Compile Include="Models\ModelPaciente.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Paciente.cs">
+      <DependentUpon>ContextModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Grupo.cs" />
+    <Compile Include="Persistence\PacienteDb.cs" />
     <Compile Include="Persistence\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recurso.cs">
@@ -338,12 +343,12 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Paciente\Incluir.cshtml" />
     <Content Include="Views\Usuario\Incluir.old.cshtml" />
     <Content Include="Views\Usuario\Incluir.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Editar.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Paciente\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

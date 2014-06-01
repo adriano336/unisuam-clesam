@@ -29,5 +29,6 @@ namespace TCC_ACE
         public DbSet<Recurso> Recurso { get; set; }
         public DbSet<TipoRecurso> TipoRecurso { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Paciente> Paciente { get; set; }
     }
 }

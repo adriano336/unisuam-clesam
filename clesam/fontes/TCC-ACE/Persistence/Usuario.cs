@@ -7,67 +7,64 @@ using TCC_ACE.Models;
 namespace TCC_ACE.Persistence
 {
 
-        public class UsuarioDB
+    public class UsuarioDB
+    {
+
+        private ContextEntities context { get; set; }
+
+        public UsuarioDB(ContextEntities context)
+        {
+            this.context = context;
+        }
+
+
+        public IQueryable<Usuario> getAll()
+        {
+            IQueryable<Usuario> usuarios = context.Usuario;
+
+            return usuarios;
+        }
+
+        public bool editarUsuario(ModelUsuario usuario)
         {
 
-            private ContextEntities context { get; set; }
+            var user = context.Usuario.Find(usuario.codigo);
+            user.codigo = usuario.codigo;
+            user.login = usuario.login;
 
-            public UsuarioDB(ContextEntities context) {
-                this.context = context;
-            }
-
-
-            public IQueryable<Usuario> getAll()
+            if (!string.IsNullOrEmpty(usuario.senha))
             {
-                IQueryable<Usuario> usuarios = context.Usuario;
-
-                return usuarios;
-            }
-
-            public bool editarUsuario(ModelUsuario usuario)
-            {
-
-                var user = context.Usuario.Find(usuario.codigo);
-                user.codigo = usuario.codigo;
-                user.login = usuario.login;
-
-                if (usuario.senha != null && usuario.senha != "")
-                {
-                    user.senha = usuario.senha;
-                }
-
-                user.titulo = usuario.titulo;
-                user.GrupoRecurso_codigo = usuario.grupo.codigo;
-
-                context.SaveChanges();
-
-                return true;
-            }
-
-            public bool salvarUsuario(ModelUsuario usuario)
-            {
-            
-                Usuario user = new Usuario();
-                user.codigo = usuario.codigo;
-                user.login = usuario.login;
                 user.senha = usuario.senha;
-                user.titulo = usuario.titulo;
-                user.GrupoRecurso_codigo = usuario.grupo.codigo;
-
-                context.Usuario.Add(user);
-
-                context.SaveChanges();
-
-                return true;
             }
 
-            public Usuario getByCod(int codigo)
-            {
-                Usuario usuario = context.Usuario.FirstOrDefault(c => c.codigo == codigo);
-                return usuario;
-            }
+            user.titulo = usuario.titulo;
+            user.GrupoRecurso_codigo = usuario.grupo.codigo;
 
+            context.SaveChanges();
 
+            return true;
         }
-    
+
+        public bool SalvarUsuario(ModelUsuario usuario)
+        {
+            Usuario user = new Usuario();
+            user.codigo = usuario.codigo;
+            user.login = usuario.login;
+            user.senha = usuario.senha;
+            user.titulo = usuario.titulo;
+            user.GrupoRecurso_codigo = usuario.grupo.codigo;
+
+            context.Usuario.Add(user);
+
+            context.SaveChanges();
+
+            return true;
+        }
+
+        public Usuario GetByCod(int codigo)
+        {
+            Usuario usuario = context.Usuario.FirstOrDefault(c => c.codigo == codigo);
+            return usuario;
+        }
+    }
 }

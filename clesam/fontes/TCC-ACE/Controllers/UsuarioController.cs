@@ -52,7 +52,7 @@ namespace TCC_ACE.Controllers
                     throw new Exception("Usuário Não encontrado");
                 }
 
-                Usuario user = new UsuarioDB(new ContextEntities()).getByCod(id);
+                Usuario user = new UsuarioDB(new ContextEntities()).GetByCod(id);
 
                 usuarioModel = new ModelUsuario() { codigo = user.codigo, login = user.login, titulo = user.titulo, grupo = new ModelGrupo { codigo = user.Grupo.codigo } };
 
@@ -104,7 +104,7 @@ namespace TCC_ACE.Controllers
                 if (ModelState.IsValid)
                 {
                     using (var context = new ContextEntities()) {
-                        new UsuarioDB(context).salvarUsuario(usuario);
+                        new UsuarioDB(context).SalvarUsuario(usuario);
                     }
                         
                     ViewBag.mensagem = "Usuario salvo com sucesso.";
@@ -126,7 +126,6 @@ namespace TCC_ACE.Controllers
 
         private static List<SelectListItem> listaGrupos()
         {
-
             List<SelectListItem> lista = new List<SelectListItem> { new SelectListItem { Text = "Selecione um item", Value = "0" } };
 
 

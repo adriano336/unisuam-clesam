@@ -50,7 +50,5 @@ namespace TCC_ACE.Models
         public string login { get; set; }
 
         public ModelGrupo grupo { get; set; }
-
-
     }
 }

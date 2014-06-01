@@ -13,6 +13,7 @@
         <AssociationConnector Association="ContextModel.FK_RecursoRecurso" ManuallyRouted="false" />
         <AssociationConnector Association="ContextModel.FK_TipoRecursoRecurso" ManuallyRouted="false" />
         <AssociationConnector Association="ContextModel.GrupoRecurso" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ContextModel.Paciente" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
