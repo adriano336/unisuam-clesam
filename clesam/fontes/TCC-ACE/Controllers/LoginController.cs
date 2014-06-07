@@ -15,7 +15,7 @@ namespace TCC.Controllers
         // GET: /Login/
         public ActionResult Index()
         {
-            
+
             return View();
         }
 
@@ -25,15 +25,17 @@ namespace TCC.Controllers
 
             ModelState.AddModelError(string.Empty, "Os dados não conferem");
 
-            if (IsValid(usuario)) {
+            if (IsValid(usuario))
+            {
                 Response.Redirect("~/Home");
             }
-            
+
 
             return View(usuario);
         }
 
-        public void LogOut() {
+        public void LogOut()
+        {
             FormsAuthentication.SignOut();
             Response.Redirect("~/Login");
         }
@@ -49,28 +51,40 @@ namespace TCC.Controllers
             {
                 using (ContextEntities db = new ContextEntities())
                 {
-
                     var usuarioRs = db.Usuario.FirstOrDefault(u => u.login == usuario.login);
 
                     if (usuarioRs != null && usuarioRs.senha == usuario.senha)
                     {
-                        usuario.grupo = new ModelGrupo() { codigo = usuarioRs.Grupo.codigo,
-                                                            descricao = usuarioRs.Grupo.descricao};
+                        usuario.grupo = new ModelGrupo()
+                        {
+                            codigo = usuarioRs.Grupo.codigo,
+                            descricao = usuarioRs.Grupo.descricao
+                        };
+
                         isValid = true;
                         FormsAuthentication.SetAuthCookie(usuario.login, false);
-                        Response.Cookies["grupo"]["codigo"] = usuario.grupo.codigo.ToString() ;
-                        Response.Cookies["grupo"]["nome"] = usuario.grupo.descricao;
+                        var cookie = Response.Cookies["grupo"];
+                        if (cookie != null)
+                        {
+                            cookie["codigo"] = usuario.grupo.codigo.ToString();
+                        }
+
+                        var httpCookie = Response.Cookies["grupo"];
+                        if (httpCookie != null)
+                        {
+                            httpCookie["nome"] = usuario.grupo.descricao;
+                        }
                     }
                 }
 
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 isValid = false;
 
             }
-            
+
             return isValid;
         }
-
-	}
+    }
 }

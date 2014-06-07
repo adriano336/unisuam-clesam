@@ -48,6 +48,9 @@
           <Property Name="NomePai" Type="nchar" MaxLength="60" />
           <Property Name="VinculoPrevidenciario" Type="nchar" MaxLength="30" />
           <Property Name="Procedencia" Type="nchar" MaxLength="30" />
+          <Property Name="CEP" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="Cidade" Type="nchar" MaxLength="20" />
+          <Property Name="UnidadeFederativa" Type="nchar" MaxLength="2" />
         </EntityType>
         <EntityType Name="Recurso">
           <Key>
@@ -305,6 +308,9 @@
           <Property Name="NomePai" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
           <Property Name="VinculoPrevidenciario" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
           <Property Name="Procedencia" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="CEP" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="Cidade" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="UnidadeFederativa" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -364,6 +370,9 @@
           <EntitySetMapping Name="Paciente">
             <EntityTypeMapping TypeName="ContextModel.Paciente">
               <MappingFragment StoreEntitySet="Paciente">
+                <ScalarProperty Name="UnidadeFederativa" ColumnName="UnidadeFederativa" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
                 <ScalarProperty Name="Procedencia" ColumnName="Procedencia" />
                 <ScalarProperty Name="VinculoPrevidenciario" ColumnName="VinculoPrevidenciario" />
                 <ScalarProperty Name="NomePai" ColumnName="NomePai" />

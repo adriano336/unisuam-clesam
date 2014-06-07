@@ -37,5 +37,8 @@ namespace TCC_ACE
         public string NomePai { get; set; }
         public string VinculoPrevidenciario { get; set; }
         public string Procedencia { get; set; }
+        public string CEP { get; set; }
+        public string Cidade { get; set; }
+        public string UnidadeFederativa { get; set; }
     }
 }
