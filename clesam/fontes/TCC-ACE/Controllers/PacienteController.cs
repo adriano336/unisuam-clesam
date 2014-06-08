@@ -46,7 +46,7 @@ namespace TCC_ACE.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,Prontuario,Nome,DataNascimento,Logradouro,NumeroLogradouro,Bairro,TelefoneResidencia,TelefoneCelular,TelefoneComercial,EstadoCivil,Escolaridade,Profissao,Sexo,Altura,Peso,Email,PacientePrecisaResponsavel,NomeResponsavel,NomeMae,NomePai,VinculoPrevidenciario,Procedencia")] Paciente paciente)
+        public ActionResult Create([Bind(Include = "Id,Prontuario,Nome,DataNascimento,Logradouro,NumeroLogradouro,Bairro,TelefoneResidencia,TelefoneCelular,TelefoneComercial,EstadoCivil,Escolaridade,Profissao,Sexo,Altura,Peso,Email,PacientePrecisaResponsavel,NomeResponsavel,NomeMae,NomePai,VinculoPrevidenciario,Procedencia")] Paciente paciente)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace TCC_ACE.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,Prontuario,Nome,DataNascimento,Logradouro,NumeroLogradouro,Bairro,TelefoneResidencia,TelefoneCelular,TelefoneComercial,EstadoCivil,Escolaridade,Profissao,Sexo,Altura,Peso,Email,PacientePrecisaResponsavel,NomeResponsavel,NomeMae,NomePai,VinculoPrevidenciario,Procedencia")] Paciente paciente)
+        public ActionResult Edit([Bind(Include = "Id,Prontuario,Nome,DataNascimento,Logradouro,NumeroLogradouro,Bairro,TelefoneResidencia,TelefoneCelular,TelefoneComercial,EstadoCivil,Escolaridade,Profissao,Sexo,Altura,Peso,Email,PacientePrecisaResponsavel,NomeResponsavel,NomeMae,NomePai,VinculoPrevidenciario,Procedencia")] Paciente paciente)
         {
             if (ModelState.IsValid)
             {
@@ -122,6 +122,12 @@ namespace TCC_ACE.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public static List<SelectListItem> PopularDropDown<E>(E enumerador) where E : class
+        {
+            return Enum.GetValues(typeof(E)).Cast<E>()
+                .Select(vr => new SelectListItem() { Selected = false, Text = vr.ToString(), Value = (vr).ToString() }).ToList();
         }
     }
 }

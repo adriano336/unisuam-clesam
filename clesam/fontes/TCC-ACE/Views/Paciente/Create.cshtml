@@ -1,4 +1,5 @@
-﻿@model TCC_ACE.Paciente
+﻿@using System.Globalization
+@model TCC_ACE.Paciente
 
 @{
     ViewBag.Title = "Cadastro de paciente";
@@ -37,7 +38,7 @@
                                                 <div class="form-group">
                                                     @Html.LabelFor(model => model.Prontuario, new { @class = "control-label" })
                                                     <div class="controls">
-                                                        @Html.EditorFor(model => model.Prontuario)
+                                                        @Html.EditorFor(model => model.Prontuario, new { @class = "input-xlarge form-control" })
                                                         @Html.ValidationMessageFor(model => model.Prontuario)
                                                     </div>
                                                 </div>
@@ -49,7 +50,7 @@
                                                 <div class="form-group">
                                                     @Html.LabelFor(model => model.Nome, new { @class = "control-label" })
                                                     <div class="controls">
-                                                        @Html.EditorFor(model => model.Nome)
+                                                        @Html.EditorFor(model => model.Nome, new { @class = "input-xlarge form-control" })
                                                         @Html.ValidationMessageFor(model => model.Nome)
                                                     </div>
                                                 </div>
@@ -162,7 +163,7 @@
                                                     <div class="controls" style="margin-top:20px">
                                                         <div class="row">
                                                             <div class="col-md-1">
-                                                                @Html.EditorFor(model => model.PacientePrecisaResponsavel)
+                                                                @Html.CheckBoxFor(model => model.PacientePrecisaResponsavel)
                                                                 @Html.ValidationMessageFor(model => model.PacientePrecisaResponsavel)
                                                                 @*<input id="precisaResposavel" name="precisaResposavel" type="checkbox" class="checkbox">*@
                                                             </div>
@@ -174,7 +175,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="col-md-8">
                                                 <div class="form-group">
                                                     @Html.LabelFor(model => model.NomeResponsavel, new { @class = "control-label" })
@@ -228,12 +228,11 @@
                                                 <div class="form-group">
                                                     @Html.LabelFor(model => model.Sexo, new { @class = "control-label" })
                                                     <div class="controls" style="min-width: 150px;">
-                                                        <select id="sexo" name="sexo" class="form-control">
-                                                            @Html.EditorFor(model => model.NomeMae)
-                                                            <option></option>
-                                                            <option>Masculino</option>
-                                                            <option>Feminino</option>
-                                                        </select>
+                                                        @Html.DropDownListFor(paciente => paciente.Sexo, new List<SelectListItem>
+                                                        {
+                                                            new SelectListItem { Text = "Masculino", Value = ((Int32)TCC_ACE.Enumerador.Sexo.Masculino).ToString()},
+                                                            new SelectListItem { Text = "Feminino", Value = ((Int32)TCC_ACE.Enumerador.Sexo.Feminino).ToString()}
+                                                        })
                                                     </div>
                                                 </div>
                                             </div>
@@ -323,7 +322,7 @@
                             </div>
                             <div class="form-actions center" style="margin-top:10px;margin-bottom:0px">
                                 <button type="button" class="btn btn-sm btn-success">
-                                    Submit
+                                    Confirmar
                                     <i class="icon-arrow-right icon-on-right bigger-110"></i>
                                 </button>
                             </div>
@@ -337,7 +336,7 @@
     </div><!-- /.col -->
 </div>
 
-<h2>Create</h2>
+@*<h2>Create</h2>
 
 @using (Html.BeginForm())
 {
@@ -530,8 +529,8 @@
             </div>
         </div>
     </div>
-}
+}*@
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "Index")
 </div>

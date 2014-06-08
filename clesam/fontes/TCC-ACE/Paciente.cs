@@ -31,7 +31,7 @@ namespace TCC_ACE
         public Nullable<int> Altura { get; set; }
         public Nullable<int> Peso { get; set; }
         public string Email { get; set; }
-        public Nullable<bool> PacientePrecisaResponsavel { get; set; }
+        public bool PacientePrecisaResponsavel { get; set; }
         public string NomeResponsavel { get; set; }
         public string NomeMae { get; set; }
         public string NomePai { get; set; }
@@ -40,5 +40,6 @@ namespace TCC_ACE
         public string CEP { get; set; }
         public string Cidade { get; set; }
         public string UnidadeFederativa { get; set; }
+        public Nullable<bool> Status { get; set; }
     }
 }

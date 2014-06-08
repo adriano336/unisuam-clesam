@@ -51,6 +51,7 @@
           <Property Name="CEP" Type="nchar" MaxLength="8" Nullable="false" />
           <Property Name="Cidade" Type="nchar" MaxLength="20" />
           <Property Name="UnidadeFederativa" Type="nchar" MaxLength="2" />
+          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="Recurso">
           <Key>
@@ -311,6 +312,7 @@
           <Property Name="CEP" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
           <Property Name="Cidade" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="UnidadeFederativa" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -370,6 +372,7 @@
           <EntitySetMapping Name="Paciente">
             <EntityTypeMapping TypeName="ContextModel.Paciente">
               <MappingFragment StoreEntitySet="Paciente">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="UnidadeFederativa" ColumnName="UnidadeFederativa" />
                 <ScalarProperty Name="Cidade" ColumnName="Cidade" />
                 <ScalarProperty Name="CEP" ColumnName="CEP" />
